@@ -1,4 +1,5 @@
 const merge = require('webpack-merge')
+const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 // 增加环境变量
 process.env.VUE_APP_VERSION = require('./package.json').version
@@ -78,11 +79,21 @@ module.exports = {
               }
             })
           ])
+        
+        if (process.env.VUE_APP_GZIP === true) {
+          // gzip
+          config.plugin('compressionGzip').use(
+            require.resolve('compression-webpack-plugin'),
+            [{
+              test: /\.js$|\.css/
+            }]
+          )
+        }
 
         if (process.env.VUE_APP_SYNC_FTP === true) {
             // ftp
           config.plugin('ftpSync').use(
-              require.resolve('./webpack-plugin/webpack-sftp-client'),
+            require.resolve('./webpack-plugin/webpack-sftp-client'),
             [{
               port: '22',
               host: '',
@@ -94,7 +105,28 @@ module.exports = {
                 // Show details of uploading for files
               verbose: true
             }]
-            )
+          )
+        }
+
+        if(process.env.VUE_APP_ARCHIVE_ZIP) {
+          config.plugin('fileManager').use(
+            require.resolve('filemanager-webpack-plugin'), 
+            [{
+              onEnd: [
+                {
+                  archive: [
+                    { source: path.resolve(__dirname, './dist/'), destination: path.resolve(__dirname, './dist/dist.zip') },
+                  ]
+                }
+              ]
+            }]
+          )
+        }
+
+        if (process.env.VUE_APP_BUNDLE_REPORT) {
+          config.plugin('bundleAnalyzer').use(
+            require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+          )
         }
       })
   }

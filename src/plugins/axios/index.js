@@ -2,7 +2,7 @@ import axios from 'axios'
 import Toast from 'muse-ui-toast'
 // 进度条
 import NProgress from 'nprogress'
-import { getAuthToken, setAuthToken } from '@/utils'
+// import { getAuthToken } from '@/utils'
 import { VERSION_CODE } from '@/constants'
 
 // 创建一个错误
