@@ -39,7 +39,7 @@ module.exports = {
         .loader('url-loader')
         .tap(options =>
           merge(options, {
-            limit: 10000,
+            limit: 10000
           })
       )
 
@@ -79,23 +79,23 @@ module.exports = {
             })
           ])
 
-          if (process.env.VUE_APP_SYNC_FTP === true) {
+        if (process.env.VUE_APP_SYNC_FTP === true) {
             // ftp
-            config.plugin('ftpSync').use(
+          config.plugin('ftpSync').use(
               require.resolve('./webpack-plugin/webpack-sftp-client'),
-              [{
-                port: '22',
-                host: '',
-                username: '',
-                password: '',
-                path: './dist/',
-                remotePath: process.env.VUE_APP_FTP_PATH,
-                clearPath: 'static/',
+            [{
+              port: '22',
+              host: '',
+              username: '',
+              password: '',
+              path: './dist/',
+              remotePath: process.env.VUE_APP_FTP_PATH,
+              clearPath: 'static/',
                 // Show details of uploading for files
-                verbose: true
-              }]
+              verbose: true
+            }]
             )
-          }
+        }
       })
   }
 }

@@ -23,7 +23,7 @@ import {
 import 'muse-ui/lib/styles/base.less'
 import 'muse-ui/lib/styles/theme.less'
 import '@/assets/styles/style.scss'
-import theme from 'muse-ui/lib/theme';
+import theme from 'muse-ui/lib/theme'
 import Helpers from 'muse-ui/lib/Helpers'
 
 import '@/components/loading/muse-ui-loading/loading.less'

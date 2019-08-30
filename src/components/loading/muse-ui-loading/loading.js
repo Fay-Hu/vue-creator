@@ -1,5 +1,5 @@
-import './loading.less';
-import color from 'muse-ui/lib/internal/mixins/color';
+import './loading.less'
+import color from 'muse-ui/lib/internal/mixins/color'
 import { CubeShadow } from 'vue-loading-spinner'
 
 export default {
@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       show: false
-    };
+    }
   },
   render (h) {
     return h('mu-fade-transition', [
@@ -55,6 +55,6 @@ export default {
           }
         }, this.text) : undefined
       ])
-    ]);
+    ])
   }
-};
+}

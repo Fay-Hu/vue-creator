@@ -3,4 +3,4 @@ export default {
   size: 48,
   color: 'primary',
   className: ''
-};
+}

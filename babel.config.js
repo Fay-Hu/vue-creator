@@ -4,18 +4,18 @@ module.exports = {
   ],
   plugins: [
     [
-      "import",
+      'import',
       {
-        "libraryName": "muse-ui",
-        "libraryDirectory": "lib",
-        "camel2DashComponentName": false
+        'libraryName': 'muse-ui',
+        'libraryDirectory': 'lib',
+        'camel2DashComponentName': false
       }
     ],
     [
-      "component",
+      'component',
       {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-chalk"
+        'libraryName': 'element-ui',
+        'styleLibraryName': 'theme-chalk'
       }
     ]
   ]
