@@ -1,0 +1,139 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin scrollBarSlim($background: rgba(#ffffff, 0.16), $trakBackground: transparent) {
+  &::-webkit-scrollbar-track{
+    background: $trakBackground;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #4e546a;
+    background: $background;
+    border-radius: 3px;
+  }
+}
+
+%scrollbar-slim{
+  @include scrollBarSlim();
+}
+
+.scrollbar-slim{
+  @extend %scrollbar-slim;
+}
+
+@mixin ellipsis($width:false, $line:false) {
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  @if $width {
+    max-width: $width;
+  }
+  @if $line {
+    display:-webkit-box;
+    -webkit-line-clamp: $line;
+    white-space: normal;
+  }
+}
+
+%ellipsis,
+.ellipsis{
+  @include ellipsis();
+}
+
+%ellipsis2,
+.ellipsis2{
+  @include ellipsis(false,2);
+}
+
+@mixin triangle ($size, $color, $direction) {
+  height: 0;
+  width: 0; 
+
+  //三角向上、向下、向右和向左时，设置边框样式
+  @if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) { 
+    border-color: transparent; 
+    border-style: solid; 
+    border-width: $size / 2; 
+     //三角向上时，底部边框颜色为$color 
+    @if $direction == up { 
+      border-bottom-color: $color; 
+      //三角向右时，左边边框颜色为$color 
+    } @else if $direction == right { 
+      border-left-color: $color; 
+      //三你向下时，顶部边框颜色为$color 
+    } @else if $direction == down { 
+      border-top-color: $color; 
+      //三角向左时，右边框颜色为$color 
+    } @else if $direction == left { 
+      border-right-color: $color; 
+    } 
+  } 
+
+  //当三角为左上、右上直角三角形时 
+  @else if ($direction == up-right) or ($direction == up-left) { 
+    border-top: $size solid $color;
+    //顶边边框样式 
+    //当三角为右上直角三角形时，设置左边边框为透明 
+    @if $direction == up-right { 
+      border-left: $size solid transparent; 
+      //当三角为左上直角三角形时，设置右边边框为透明 
+    } @else if $direction == up-left { 
+      border-right: $size solid transparent; 
+    } 
+  } 
+
+  //当三角为右下、左下直角三角形时 
+  @else if ($direction == down-right) or ($direction == down-left) { 
+    border-bottom: $size solid $color;
+    //底边边框样式 
+    //当三角为右下直角三角形时，设置左边边框为透明 
+    @if $direction == down-right { 
+      border-left: $size solid transparent; 
+      //当三你为左下直角三角形时，设置右边边框为透明 
+    } @else if $direction == down-left { 
+      border-right: $size solid transparent; 
+    } 
+  } 
+}
+
+// inline-block 居中
+%inline-block__after{
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// gutters
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    .#{$abbrev}t-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .#{$abbrev}r-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .#{$abbrev}b-#{$size},
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .#{$abbrev}l-#{$size},
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}

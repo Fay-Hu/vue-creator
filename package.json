@@ -1,0 +1,81 @@
+{
+  "name": "ccr-qcc-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode dev",
+    "build:test": "vue-cli-service build --mode test",
+    "build:prod": "vue-cli-service build --mode prod",
+    "lint": "vue-cli-service lint",
+    "inspect": "vue-cli-service inspect"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dayjs": "^1.8.14",
+    "mint-ui": "^2.2.13",
+    "muse-ui": "^3.0.2",
+    "muse-ui-loading": "^0.2.0",
+    "muse-ui-toast": "^0.3.0",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "promise-polyfill": "^8.1.0",
+    "vue": "2.5.10",
+    "vue-backtotop": "^1.6.1",
+    "vue-loading-spinner": "^1.0.11",
+    "vue-router": "^3.0.6",
+    "vue2-transitions": "^0.3.0",
+    "vuex": "^3.1.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.11.2",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-plugin-html": "^2.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "node-sass": "^4.12.0",
+    "postcss-px2rem-exclude": "0.0.6",
+    "sass-loader": "^7.1.0",
+    "scp2": "^0.5.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "vue-template-compiler": "2.5.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-px2rem-exclude": {
+        "remUnit": 128,
+        "exclude": "/node_modules/i"
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

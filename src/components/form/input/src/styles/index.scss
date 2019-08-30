@@ -1,0 +1,96 @@
+.input{
+  height: 100%;
+  width: 100%;
+  padding: 0 10px;
+
+  border: 1px solid #ccc;
+  border-radius: 0;
+  // border-radius: 20px;
+  background-color: $color-body;
+  transition: all $transitionBezierPullUp;
+
+  &:focus{
+    border-color: transparent;
+    outline: none;
+  }
+
+  &-wrap{
+    position: relative;
+    display: inline-block;
+    height: 38px;
+  }
+}
+
+.focus-border{
+  &::before, &::after{
+    content: "";
+    position: absolute;
+    
+    width: 0;
+    height: 2px;
+    background-color: $color-emphasis;
+    transition: $transitionBezierInput;
+  }
+
+  &::before{
+    top: 0;
+    left: 0;
+  }
+
+  &::after{
+    bottom: 0;
+    right: 0;
+  }
+
+  i{
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      
+      width: 2px;
+      height: 0;
+      background-color: $color-emphasis;
+      transition: $transitionBezierInput;
+    }
+
+    &::before{
+      top: 0;
+      left: 0;
+    }
+    &::after{
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .input-focus & {
+    @keyframes scaleDown {
+      0% {
+        transform: translateX(-20px);
+      }
+
+      // 70%{
+      //   opacity: 1;
+      // }
+
+      // 100%{
+      //   opacity: 0;
+      // }
+    }
+    &::before, &::after{
+      width: 100%;
+      animation: scaleDown $transitionBezierInput forwards;
+    }
+
+    i{
+      &::before, &::after {
+        height: 100%;
+        animation: scaleDown $transitionBezierInput forwards;
+      }
+    }
+  }
+}
+
+.paper{
+  height: 100%;
+}
