@@ -93,7 +93,7 @@ module.exports = {
         if (process.env.VUE_APP_SYNC_FTP === true) {
             // ftp
           config.plugin('ftpSync').use(
-            require.resolve('./webpack-plugin/webpack-sftp-client'),
+            require.resolve('webpack-sftp-client-fay'),
             [{
               port: '22',
               host: '',
