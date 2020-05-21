@@ -80,7 +80,7 @@ module.exports = {
             })
           ])
         
-        if (process.env.VUE_APP_GZIP === true) {
+        if (process.env.VUE_APP_GZIP === 'true') {
           // gzip
           config.plugin('compressionGzip').use(
             require.resolve('compression-webpack-plugin'),
@@ -90,7 +90,7 @@ module.exports = {
           )
         }
 
-        if (process.env.VUE_APP_SYNC_FTP === true) {
+        if (process.env.VUE_APP_SYNC_FTP === 'true') {
             // ftp
           config.plugin('ftpSync').use(
             require.resolve('webpack-sftp-client-fay'),
@@ -114,9 +114,10 @@ module.exports = {
             [{
               onEnd: [
                 {
-                  archive: [
-                    { source: path.resolve(__dirname, './dist/'), destination: path.resolve(__dirname, './dist/dist.zip') },
-                  ]
+                  archive: [{ 
+                    source: path.resolve(__dirname, './dist/'), 
+                    destination: path.resolve(__dirname, './dist/dist.zip') 
+                  }]
                 }
               ]
             }]
